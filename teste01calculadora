@@ -1,0 +1,69 @@
+CalculadoraTestes.cs
+fragmento de código
+using NUnit.Framework;
+
+public class CalculatorTests
+{
+    private Calculator _calculator;
+
+    [SetUp]
+    public void Setup()
+    {
+        _calculator = new Calculator();
+    }
+
+    // Test for Add method
+    [Test]
+    public void Add_ShouldAddTwoNumbersCorrectly()
+    {
+        int result = _calculator.Add(5, 3);
+        Assert.AreEqual(8, result);
+    }
+
+    // Test for Subtract method
+    [Test]
+    public void Subtract_ShouldSubtractTwoNumbersCorrectly()
+    {
+        int result = _calculator.Subtract(5, 3);
+        Assert.AreEqual(2, result);
+    }
+
+    // Test for Multiply method
+    [Test]
+    public void Multiply_ShouldMultiplyTwoNumbersCorrectly()
+    {
+        int result = _calculator.Multiply(5, 3);
+        Assert.AreEqual(15, result);
+    }
+
+    // Test for Divide method with division by zero
+    [Test]
+    public void Divide_ShouldThrowDivideByZeroException_WhenDivisorIsZero()
+    {
+        Assert.Throws<DivideByZeroException>(() => _calculator.Divide(10, 0));
+    }
+
+    // Test for Divide method with valid division
+    [Test]
+    public void Divide_ShouldDivideTwoNumbersCorrectly()
+    {
+        int result = _calculator.Divide(10, 2);
+        Assert.AreEqual(5, result);
+    }
+
+    // Test for IsPrime method with prime number
+    [Test]
+    public void IsPrime_ShouldReturnTrue_ForPrimeNumber()
+    {
+        bool isPrime = _calculator.IsPrime(7);
+        Assert.IsTrue(isPrime);
+    }
+
+    // Test for IsPrime method with non-prime number
+    [Test]
+    public void IsPrime_ShouldReturnFalse_ForNonPrimeNumber()
+    {
+        bool isPrime = _calculator.IsPrime(8);
+        Assert.IsFalse(isPrime);
+    }
+}
